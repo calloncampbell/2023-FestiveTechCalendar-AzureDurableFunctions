@@ -2,31 +2,17 @@
   "version": "2.0",
   "extensions": {
     "durableTask": {
-      "HubName": "%DurableTaskHubName%",
+      "hubName": "%DurableTaskHubName%",
+      "UseGracefulShutdown": "true",
       "storageProvider": {
-        "type": "azureStorage",
+        "type": "Netherite",
+        "PartitionCount": "12",
         "connectionStringName": "DurableManagementStorage",
-        "controlQueueBatchSize": 32,
-        "controlQueueBufferThreshold": 256,
-        "controlQueueVisibilityTimeout": "00:05:00",
-        "maxQueuePollingInterval": "00:00:30",
-        "partitionCount": 4,
-        "trackingStoreConnectionStringName": "DurableManagementStorage",
-        "trackingStoreNamePrefix": "DurableTask",
-        "useLegacyPartitionManagement": true,
-        "workItemQueueVisibilityTimeout": "00:05:00"
-      },
-      "tracing": {
-        "traceInputsAndOutputs": false,
-        "traceReplayEvents": false
+        "EventHubsConnectionName": "EventHubsConnection"        
       },
       "maxConcurrentActivityFunctions": 10,
       "maxConcurrentOrchestratorFunctions": 10,
-      "extendedSessionsEnabled": false,
-      "extendedSessionIdleTimeoutInSeconds": 30,
-      "useAppLease": true,
-      "useGracefulShutdown": false,
-      "maxEntityOperationBatchSize": 50
+      "useGracefulShutdown": true
     }
   },
   "logging": {
