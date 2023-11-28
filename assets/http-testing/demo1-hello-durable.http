@@ -1,0 +1,16 @@
+### Welcome
+GET http://localhost:7225/api/Welcome
+
+### Start orchestration
+get http://localhost:7225/api/StarterFunction
+
+{
+  "id": "515140cb66074ff49e9a66579bd0c4a1",
+  "purgeHistoryDeleteUri": "http://localhost:7225/runtime/webhooks/durabletask/instances/515140cb66074ff49e9a66579bd0c4a1?code=b5tXqtf2ZdWsExFQczn66pvulPQOten6LoSve26xOUtxAzFu_X08bQ==",
+  "sendEventPostUri": "http://localhost:7225/runtime/webhooks/durabletask/instances/515140cb66074ff49e9a66579bd0c4a1/raiseEvent/{eventName}?code=b5tXqtf2ZdWsExFQczn66pvulPQOten6LoSve26xOUtxAzFu_X08bQ==",
+  "statusQueryGetUri": "http://localhost:7225/runtime/webhooks/durabletask/instances/515140cb66074ff49e9a66579bd0c4a1?code=b5tXqtf2ZdWsExFQczn66pvulPQOten6LoSve26xOUtxAzFu_X08bQ==",
+  "terminatePostUri": "http://localhost:7225/runtime/webhooks/durabletask/instances/515140cb66074ff49e9a66579bd0c4a1/terminate?reason={{text}}}\u0026code=b5tXqtf2ZdWsExFQczn66pvulPQOten6LoSve26xOUtxAzFu_X08bQ=="
+}
+
+### Get status
+GET http://localhost:7225/runtime/webhooks/durabletask/instances/515140cb66074ff49e9a66579bd0c4a1?code=b5tXqtf2ZdWsExFQczn66pvulPQOten6LoSve26xOUtxAzFu_X08bQ==
