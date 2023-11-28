@@ -19,14 +19,17 @@ namespace FunctionApp_HelloDurable.Functions.HttpTrigger
         [Function(nameof(StarterFunction))]
         public async Task<HttpResponseData> HttpStart(
             [HttpTrigger(AuthorizationLevel.Anonymous, "get", "post")] HttpRequestData req,
-            [DurableClient] DurableTaskClient client,
+            [DurableClient(TaskHub = "%DurableTaskHubName%")] DurableTaskClient client,
             FunctionContext executionContext)
         {
+            var taskHubName = Environment.GetEnvironmentVariable("DurableTaskHubName", EnvironmentVariableTarget.Process);
+            _logger.LogInformation("StarterFunction triggered on DurableTaskHub: {taskHubName}", taskHubName);
+
             // Function input comes from the request content.
             string instanceId = await client.ScheduleNewOrchestrationInstanceAsync(
                 nameof(OrchestratorFunction));
 
-            _logger.LogInformation("Started orchestration with ID = '{instanceId}'.", instanceId);
+            _logger.LogInformation("Started orchestration with ID = '{instanceId}' on task hub '{taskHubName}'.", instanceId, taskHubName);
 
             // Returns an HTTP 202 response with an instance management payload.
             // See https://learn.microsoft.com/azure/azure-functions/durable/durable-functions-http-api#start-orchestration
