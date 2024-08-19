@@ -3,7 +3,6 @@
   "extensions": {
     "durableTask": {
       "hubName": "%DurableTaskHubName%",
-      "UseGracefulShutdown": "true",
       "storageProvider": {
         "type": "Netherite",
         "PartitionCount": "12",

@@ -50,6 +50,8 @@ namespace FunctionApp_StarWarsApi.Functions.Durable.Orchestrator
                 result.Residents = tasks.Select(task => task.Result).ToList<Person>();
             }
 
+            context.SetCustomStatus("This is a custom status at end of orchestration.");
+
             return result;
         }
     }
